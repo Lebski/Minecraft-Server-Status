@@ -1,0 +1,85 @@
+{
+  "name": "react-electron",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.4",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "assert": "^2.0.0",
+    "cors": "^2.8.5",
+    "ffmpeg-static": "^5.0.0",
+    "minecraft-protocol": "^1.35.0",
+    "minecraft-server-util": "^5.2.9",
+    "node-rtsp-stream": "^0.0.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "electron-is-dev": "^2.0.0",
+    "express": "^4.18.1",
+    "concurrently": "^7.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^11.2.1",
+    "electron-builder": "^22.9.1",
+    "prettier": "^2.2.1",
+    "wait-on": "^6.0.1"
+  },
+  "main": "public/main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron:serve": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn electron:start\"",
+    "electron:build": "yarn build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:start": "wait-on tcp:3000 && electron .",
+    "electron:buildWin": "yarn build && electron-builder -w -c.extraMetadata.main=build/main.js"
+  },
+  "build": {
+    "extends": null,
+    "appId": "com.example.electron-cra",
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "icon": "./src/assets/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "win": {
+      "icon": "./src/assets/icon.png"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

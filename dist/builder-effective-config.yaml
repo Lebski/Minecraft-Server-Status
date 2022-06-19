@@ -1,0 +1,19 @@
+directories:
+  output: dist
+  buildResources: assets
+extends: null
+appId: com.example.electron-cra
+files:
+  - filter:
+      - dist/**/*
+      - build/**/*
+      - node_modules/**/*
+      - package.json
+mac:
+  icon: ./src/assets/icon.icns
+  category: public.app-category.utilities
+win:
+  icon: ./src/assets/icon.png
+extraMetadata:
+  main: build/main.js
+electronVersion: 11.5.0

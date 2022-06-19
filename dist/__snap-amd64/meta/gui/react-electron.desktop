@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=react-electron
+Exec=react-electron %U
+Terminal=false
+Type=Application
+Icon=${SNAP}/meta/gui/icon.png
+StartupWMClass=react-electron
+Categories=Utility;
